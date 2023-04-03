@@ -1,35 +1,20 @@
 <?php
 
-  
-
 namespace App\Http\Controllers;
 
-  
-
 use Illuminate\Http\Request;
-
 use Laravel\Socialite\Facades\Socialite;
-
 use Exception;
-
 use App\Models\User;
-
 use Illuminate\Support\Facades\Auth;
-
-  
 
 class GithubController extends Controller
 
 {
-
     /**
-
      * Create a new controller instance.
-
      *
-
      * @return void
-
      */
 
     public function redirectToGithub()
@@ -56,43 +41,32 @@ class GithubController extends Controller
 
     {
 
-        try {
+        // try {
 
         
 
             $user = Socialite::driver('github')->user();
-
+                    dd($user);
          
 
             $finduser = User::where('github_id', $user->id)->first();
-
+                
          
 
             if($finduser){
 
-         
-
                 Auth::login($finduser);
-
-        
-
                 return redirect()->intended('dashboard');
-
-         
 
             }else{
 
                 $newUser = User::updateOrCreate(['email' => $user->email],[
 
                         'name' => $user->name,
-
                         'github_id'=> $user->id,
-
                         'password' => encrypt('123456dummy')
 
                     ]);
-
-        
 
                 Auth::login($newUser);
 
@@ -104,11 +78,11 @@ class GithubController extends Controller
 
         
 
-        } catch (Exception $e) {
+        // } catch (Exception $e) {
 
-            dd($e->getMessage());
+        //     dd($e->getMessage());
 
-        }
+        // }
 
     }
 

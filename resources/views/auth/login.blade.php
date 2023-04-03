@@ -35,21 +35,43 @@
 
                         {{ __('Forgot your password?') }}
 
-                    </a>
+                    </a> 
+
+                    
 
                 @endif
 
             
                 <div>
-                <x-button class="mt-2">
+                <x-button class="mt-2 mr-2">
                     {{ __('Login') }}
-                </x-button>
+                </x-button> <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
 
-                <a class="btn mt-5" href="{{ route('auth.github') }}"
-                style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff;">
+{{ __('Or Register') }}
+
+</a>
+
+            <div>
+            
+                <a class="btn mt-2" href="{{ route('auth.github') }}"
+                style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff; possition: flex;">
                 Login with Github
+                </a> 
+
+                 <a class="btn mt-2" href="{{ route('auth.tiktok') }}"
+                style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff; possition: flex;">
+                Login with Tiktok
                 </a>
 
+                <a class="btn mt-2" href="{{ url('auth/google') }}"
+                style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff; possition: flex;">
+                Login with Google
+                </a>
+
+                
+
+                <!-- <a href='{SERVER_ENDPOINT_OAUTH}'>Continue with TikTok</a> -->
+        </div>
                 </div>
             </div>
         </form>

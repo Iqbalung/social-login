@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
   
 
 use App\Http\Controllers\GithubController;
-
+use App\Http\Controllers\TiktokController;
+use App\Http\Controllers\GoogleController;
   
 
 /*
@@ -46,12 +47,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 })->name('dashboard');
 
-  
+Route::controller(TiktokController::class)->group(function(){
+    Route::get('auth/tiktok', 'redirectToTiktok')->name('auth.tiktok');
+    Route::get('auth/tiktok/callback', 'handleTiktokCallback');
+});
 
 Route::controller(GithubController::class)->group(function(){
-
     Route::get('auth/github', 'redirectToGithub')->name('auth.github');
-
     Route::get('auth/github/callback', 'handleGithubCallback');
+});
 
+Route::controller(GoogleController::class)->group(function(){
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 });

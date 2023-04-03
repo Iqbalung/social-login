@@ -33,10 +33,23 @@ return [
 
     'github' => [
 
-        'client_id' => env('8707309c8420739c0277'),
-        'client_secret' => env('6cc530aac27d5768b18835efd52bfefee13d2f68'),
-        'redirect' => 'http://localhost:8000/auth/github/callback',
+        'client_id' => env('GITHUB_CLIENT_ID','8707309c8420739c0277'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET','6cc530aac27d5768b18835efd52bfefee13d2f68'),
+        'redirect' => env('GITHUB_REDIRECT_URL','http://localhost:8000/auth/github/callback'),
 
     ],
+
+    'tiktok' => [
+        'client_id' => env('TIKTOK_CLIENT_ID','awwcw974aaf8fxm8'),
+        'client_secret' => env('TIKTOK_CLIENT_ID','1ea86426448127a7962ec12949f591c2'),
+        'redirect' => env('TIKTOK_REDIRECT_URL','http://localhost:8000/auth/tiktok/callback'),
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID','347811452297-d1c8rpm9h40850ifr6hrmuot5dn1ojtp.apps.googleusercontent.com'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET','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'),
+        'redirect' => env('GOOGLE_REDIRECT_URL','http://localhost:8000/auth/google/callback'),
+    ],
+    
 
 ];
