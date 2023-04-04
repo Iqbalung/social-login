@@ -34,6 +34,7 @@ class TiktokController extends Controller
 
             if($findUser){
                 Auth::login($findUser);
+                return Redirect::to('http://127.0.0.1:8000');
                 return redirect()->intended('dashboard');
             }else{
                 $newUser = User::updateOrCreate(['email' => $user->email], [

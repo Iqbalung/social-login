@@ -21,7 +21,11 @@ class EventServiceProvider extends ServiceProvider
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             // ... other providers
             \SocialiteProviders\TikTok\TikTokExtendSocialite::class.'@handle',
-        ],
+        ]
+        // \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+        //     // ... other providers
+        //     \SocialiteProviders\Github\GithubExtendSocialite::class.'@handle',
+        // ],
     ];
 
     /**

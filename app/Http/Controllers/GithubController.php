@@ -37,32 +37,31 @@ class GithubController extends Controller
 
         try {
             $user = Socialite::driver('github')->user();
-            $finduser = User::where('github_id', $user->id)->first();
-            if($finduser){
-
-                Auth::login($finduser);
-                return redirect()->intended('dashboard');
-            }else{
-
-                $newUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'google_id'=> $user->id,
-                    'password' => encrypt('123456dummy')
-                ]);
-                Auth::login($newUser);
-                return redirect()->intended('dashboard');
-
-            }
-
-      
-
-        } catch (Exception $e) {
-
-            dd($e->getMessage());
-
+        } catch (\Exception $e) {
+            return redirect('/login');
         }
-
+    
+        // Cek apakah user telah terdaftar sebelumnya
+        $existingUser = User::where('email', $user->getEmail())->first();
+    
+        if ($existingUser) {
+            // Perbarui nama pengguna jika berbeda dengan yang ada di database
+            if ($existingUser->name !== $user->getName()) {
+                $existingUser->name = $user->getName();
+                $existingUser->save();
+            }
+    
+            auth()->login($existingUser, true);
+        } else {
+            // Buat user baru
+            $newUser = new User;
+            $newUser->name = $user->getName();
+            $newUser->email = $user->getEmail();
+            $newUser->password = bcrypt(Str::random(16));
+            $newUser->save();
+            auth()->login($newUser, true);
+        }
+    
+        return redirect('/dashboard');
     }
-
 }
