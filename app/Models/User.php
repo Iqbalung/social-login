@@ -19,16 +19,10 @@ class User extends Authenticatable
 {
 
     use HasApiTokens;
-
     use HasFactory;
-
     use HasProfilePhoto;
-
     use Notifiable;
-
     use TwoFactorAuthenticatable;
-
-  
 
     /**
 
@@ -47,7 +41,8 @@ class User extends Authenticatable
         'password',
         'github_id',
         'tikok_id',
-        'google_id'
+        'google_id',
+        'facebook_id',
 
     ];
 

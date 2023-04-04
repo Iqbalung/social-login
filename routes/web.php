@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GithubController;
 use App\Http\Controllers\TiktokController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\FacebookController;
   
 
 /*
@@ -58,6 +59,11 @@ Route::controller(GithubController::class)->group(function(){
 });
 
 Route::controller(GoogleController::class)->group(function(){
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+    Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+    Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+});
+
+Route::controller(FacebookController::class)->group(function(){
+    Route::get('auth/facebook', 'redirectToFacebook')->name('auth.facebook');
+    Route::get('auth/facebook/callback', 'handleFacebookCallback');
 });

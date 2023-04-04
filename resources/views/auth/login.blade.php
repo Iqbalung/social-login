@@ -68,6 +68,11 @@
                 Login with Google
                 </a>
 
+                <a class="btn mt-2" href="{{ url('auth/facebook') }}"
+                style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff; possition: flex;">
+                Login with Facebook
+                </a>
+
                 
 
                 <!-- <a href='{SERVER_ENDPOINT_OAUTH}'>Continue with TikTok</a> -->
