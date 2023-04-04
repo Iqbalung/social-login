@@ -10,6 +10,7 @@ use App\Http\Controllers\GithubController;
 use App\Http\Controllers\TiktokController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\LinkedinController;
   
 
 /*
@@ -66,4 +67,9 @@ Route::controller(GoogleController::class)->group(function(){
 Route::controller(FacebookController::class)->group(function(){
     Route::get('auth/facebook', 'redirectToFacebook')->name('auth.facebook');
     Route::get('auth/facebook/callback', 'handleFacebookCallback');
+});
+
+Route::controller(LinkedinController::class)->group(function(){
+    Route::get('auth/linkedin', 'redirectToLinkedin')->name('auth.linkedin');
+    Route::get('auth/linkedin/callback', 'handleLinkedinCallback');
 });

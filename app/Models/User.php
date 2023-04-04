@@ -43,6 +43,7 @@ class User extends Authenticatable
         'tikok_id',
         'google_id',
         'facebook_id',
+        'linkedin_id',
 
     ];
 

@@ -73,6 +73,11 @@
                 Login with Facebook
                 </a>
 
+                <a class="btn mt-2" href="{{ url('auth/linkedin') }}"
+                style="background: black; padding: 10px; width: 100%; text-align: center; display: block; border-radius:4px; color: #ffffff; possition: flex;">
+                Login with Linkedin
+                </a>
+
                 
 
                 <!-- <a href='{SERVER_ENDPOINT_OAUTH}'>Continue with TikTok</a> -->

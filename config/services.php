@@ -57,6 +57,12 @@ return [
         'client_secret' => env('FACEBOOK_CLIENT_SECRET','211a72d5ee06665db90d792217b5a4e6'),
         'redirect' => env('FACEBOOK_REDIRECT_URL','http://localhost:8000/auth/facebook/callback'),
     ],
+
+    'linkedin' => [
+        'client_id' => env('LINKEDIN_CLIENT_ID','86qp6x4mc3n0u9'),
+        'client_secret' => env('LINKEDIN_CLIENT_SECRET','5vMBu4ClpHFE4fJP'),
+        'redirect' => env('LINKEDIN_REDIRECT_URL','http://localhost:8000/auth/linkedin/callback'),
+    ],
     
 
 ];
